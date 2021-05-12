@@ -1,0 +1,17 @@
+.menu {
+    text-align: center;
+    padding: 10px;
+}
+
+.menu a.link {
+    margin: 5px;
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all .4s ease;
+}
+
+.menu a.link:hover {
+    font-size: 18px;
+}
