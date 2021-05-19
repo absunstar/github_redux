@@ -5,10 +5,10 @@ import './index.css';
 import { connect } from 'react-redux';
 
 function FavoriteResult(props) {
-  const list = [];
+  let list = [];
 
-  if (props.fav_list && props.list.map) {
-    list = props.list.map((fork) => {
+  if (props.fav_list && props.fav_list.map) {
+    list = props.fav_list.map((fork) => {
       return (
         <tr key={fork.id}>
           <td>
@@ -19,9 +19,7 @@ function FavoriteResult(props) {
           </td>
           <td> {fork.owner.login} </td>
           <td> {fork.stargazers_count} </td>
-          <td>
-            <button> Like </button>
-          </td>
+
         </tr>
       );
     });
@@ -35,7 +33,6 @@ function FavoriteResult(props) {
             <th> Full Name </th>
             <th> Owner </th>
             <th> Stars </th>
-            <th> Actions </th>
           </tr>
         </thead>
 
@@ -45,5 +42,20 @@ function FavoriteResult(props) {
   );
 }
 
+const mapStateToProps = (state) => {
+  if (state && state.list) {
+    return {
+      list: state.list,
+      fav_list: state.fav_list,
+    };
+  }
+};
 
-export default FavoriteResult;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    search: () => dispatch({ type: 'search_fork' }),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(FavoriteResult);
+
