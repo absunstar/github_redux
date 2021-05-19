@@ -8,7 +8,10 @@ function SearchResult(props) {
   let list = [];
 
   function addFav(fork) {
-    fork.hideLike = true;
+    if (fork.isFav) {
+      return;
+    }
+    fork.isFav = true;
 
     props.list.forEach((element, i) => {
       if (element.id === fork.id) {
@@ -33,7 +36,7 @@ function SearchResult(props) {
             <td> {fork.owner.login} </td>
             <td> {fork.stargazers_count} </td>
             <td>
-              <button
+              <button className={fork.isFav ? 'hide' : ''}
                 onClick={() => {
                   addFav(fork);
                 }}
