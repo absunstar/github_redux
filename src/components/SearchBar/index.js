@@ -3,15 +3,14 @@ import store from '../../redux/store';
 import './index.css';
 import { connect } from 'react-redux';
 
-let text = 'vvvv';
 
 function SearchBar(props) {
   function trySearch() {
     let text = document.querySelector('input').value;
-    if (text.indexOf(':/') === -1) {
+    if (text.indexOf('/:') === -1) {
       alert('Name Must Like owner/:repositoryName');
     } else {
-      let arr = text.split(':/');
+      let arr = text.split('/:');
       props.search(arr[0], arr[1]);
     }
   }
