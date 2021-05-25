@@ -20,6 +20,7 @@ function SearchResult(props) {
     });
     props.fav_list.push(fork);
     render();
+    alert(`${fork.full_name} Added To Favorite`)
   }
 
   function render() {
